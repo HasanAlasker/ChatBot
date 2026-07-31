@@ -7,7 +7,6 @@ dotenv.config();
 const app = express();
 
 const port = process.env.PORT ?? "4000";
-
 app.use(cors({ origin: "*" }));
 
 app.use(json());
@@ -19,16 +18,20 @@ app.get("/api/hello", async (req: Request, res: Response) => {
   res.json({ message: "Hello world" }).status(200);
 });
 
+const conversations = new Map<string, string>();
+
 app.post("/api/chat", async (req: Request, res: Response) => {
   try {
-    const { prompt } = req.body;
+    const { prompt, conversationId } = req.body;
     const aiClient = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await aiClient.interactions.create({
       model: "gemini-3.6-flash",
       input: prompt,
-      
+      previous_interaction_id: conversations.get(conversationId),
     });
+
+    conversations.set(conversationId, response.id);
 
     return res.json({ success: true, response: response.output_text });
   } catch (error) {
