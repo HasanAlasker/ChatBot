@@ -1,20 +1,41 @@
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { ArrowUp } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 
 interface FormProps {
   prompt: string;
 }
-export default function ChatInput() {
+
+interface Props {
+  setMsgs: Dispatch<SetStateAction<string[] | null>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
+}
+
+interface LLMresponse {
+  response: string;
+}
+
+export default function ChatInput({ setMsgs, setLoading }: Props) {
   const conversationId = useRef(crypto.randomUUID);
+
   const { register, handleSubmit, reset, formState } = useForm<FormProps>();
 
   const onSubmit = async ({ prompt }: FormProps) => {
+    setLoading(true);
     reset();
-    const res = await axios.post("/api/chat", { prompt, conversationId });
-    console.log(res.data)
+    try {
+      setMsgs((prev) => [...(prev ?? []), prompt]);
+      const { data } = await axios.post<LLMresponse>("/api/chat", {
+        prompt,
+        conversationId,
+      });
+      setMsgs((prev) => [...(prev ?? []), data.response]);
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
