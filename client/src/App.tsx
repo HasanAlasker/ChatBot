@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-
-import { Button } from "@/components/ui/button";
+import ChatInput from "./components/chat/ChatInput";
 
 function App() {
-  const [msg, setMsg] = useState("");
-
-  useEffect(() => {
-    fetch("/api/hello")
-      .then((res) => res.json())
-      .then((data) => setMsg(data.message));
-  }, []);
   return (
-    <>
-      <h1>{msg ?? "loading..."}</h1>
-      <Button>Hello ShadCn</Button>
-    </>
+    <div className="Screen">
+      <ChatInput />
+    </div>
   );
 }
 
