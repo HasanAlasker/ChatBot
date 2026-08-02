@@ -51,7 +51,7 @@ export default function ChatInput({ setMsgs, setLoading, loading }: Props) {
 
   return (
     <form
-      className="flex items-center border-2 bg-white/20 border-gray-300 rounded-full px-2 fixed bottom-0 left-0 right-0 m-4 h-fit backdrop-blur-sm shadow-md shadow-black/10"
+      className="flex items-center border-2 bg-white/20 border-gray-300 rounded-full px-2 fixed bottom-0 left-0 right-0 mb-4 mx-4 md:mx-40 h-fit backdrop-blur-sm shadow-md shadow-black/10"
       onSubmit={handleSubmit(onSubmit)}
     >
       <textarea

@@ -14,7 +14,7 @@ export const chatService = {
     conversationId: string,
   ): Promise<chatResponse> {
     const response = await aiClient.interactions.create({
-      model: "gemini-3.6-flash",
+      model: "gemini-3.1-flash-lite",
       input: prompt,
       previous_interaction_id:
         conversationRepo.getLastResponseId(conversationId),

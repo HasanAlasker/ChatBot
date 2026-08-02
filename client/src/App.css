@@ -131,6 +131,8 @@
 
 @utility msg {
   @apply flex flex-col w-fit max-w-md py-3 px-5;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 @utility botMsg {
   @apply msg rounded-r-2xl rounded-tl-xl bg-gray-100  border border-gray-300;
@@ -148,5 +150,5 @@
   width: 100%;
   min-height: 100svh;
   position: relative;
-  padding: 1rem 1rem 10rem 1rem;
+  padding-bottom: 10rem;
 }
