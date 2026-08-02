@@ -12,6 +12,7 @@ const popSound = new Audio(Pop);
 popSound.volume = 0.2;
 const notificationSound = new Audio(Notification);
 notificationSound.volume = 0.2;
+
 interface FormProps {
   prompt: string;
 }

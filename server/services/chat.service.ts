@@ -1,5 +1,16 @@
 import { GoogleGenAI } from "@google/genai";
 import { conversationRepo } from "../repositories/conversation.repo";
+import template from "../prompts/instructions.txt";
+import fs from "fs";
+import path from "path";
+import { isUtf8 } from "buffer";
+
+const parkInfo = fs.readFileSync(
+  path.join(__dirname, "..", "prompts", "WonderWorld.md"),
+  "utf8",
+);
+
+const instructions = template.replace("{{parkInfo}}", parkInfo);
 
 const aiClient = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
@@ -18,6 +29,7 @@ export const chatService = {
       input: prompt,
       previous_interaction_id:
         conversationRepo.getLastResponseId(conversationId),
+      system_instruction: instructions,
     });
 
     conversationRepo.setLastResponseId(conversationId, response.id);
