@@ -5,7 +5,13 @@ import axios from "axios";
 import { ArrowUp } from "lucide-react";
 import { useRef, type Dispatch, type SetStateAction } from "react";
 import { useForm } from "react-hook-form";
+import Notification from "../../assets/sounds/notification.mp3";
+import Pop from "../../assets/sounds/pop.mp3";
 
+const popSound = new Audio(Pop);
+popSound.volume = 0.2;
+const notificationSound = new Audio(Notification);
+notificationSound.volume = 0.2;
 interface FormProps {
   prompt: string;
 }
@@ -28,6 +34,7 @@ export default function ChatInput({ setMsgs, setLoading, loading }: Props) {
         ...prev,
         { isMine: true, id: crypto.randomUUID(), message: prompt },
       ]);
+      popSound.play();
       const { data } = await axios.post<LLMresponse>("/api/chat", {
         prompt,
         conversationId,
@@ -36,7 +43,9 @@ export default function ChatInput({ setMsgs, setLoading, loading }: Props) {
         ...prev,
         { id: crypto.randomUUID(), message: data.response },
       ]);
+      notificationSound.play();
     } catch (error) {
+      setLoading(false);
     } finally {
       setLoading(false);
     }
