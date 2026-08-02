@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import type { LLMresponse } from "@/types/LLM";
 import type { Message } from "@/types/msg";
 import axios from "axios";
 import { ArrowUp } from "lucide-react";
@@ -8,18 +9,13 @@ import { useForm } from "react-hook-form";
 interface FormProps {
   prompt: string;
 }
-
 interface Props {
   setMsgs: Dispatch<SetStateAction<Message[]>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
+  loading: boolean
 }
 
-interface LLMresponse {
-  id: string;
-  response: string;
-}
-
-export default function ChatInput({ setMsgs, setLoading }: Props) {
+export default function ChatInput({ setMsgs, setLoading, loading }: Props) {
   const conversationId = useRef(crypto.randomUUID());
 
   const { register, handleSubmit, reset, formState } = useForm<FormProps>();
@@ -55,7 +51,7 @@ export default function ChatInput({ setMsgs, setLoading }: Props) {
 
   return (
     <form
-      className="flex items-center border-2 border-gray-300 rounded-full px-2 fixed bottom-0 left-0 right-0 m-5 h-fit"
+      className="flex items-center border-2 bg-white border-gray-300 rounded-full px-2 fixed bottom-0 left-0 right-0 m-5 h-fit"
       onSubmit={handleSubmit(onSubmit)}
     >
       <textarea
@@ -70,7 +66,7 @@ export default function ChatInput({ setMsgs, setLoading }: Props) {
       />
       <Button
         type="submit"
-        disabled={!formState.isValid}
+        disabled={!formState.isValid || loading}
         className="rounded-full aspect-square h-14"
       >
         <ArrowUp className="size-6!" />
