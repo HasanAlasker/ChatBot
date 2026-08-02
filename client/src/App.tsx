@@ -3,6 +3,7 @@ import "./App.css";
 import ChatInput from "./components/chat/ChatInput";
 import { BeatLoader } from "react-spinners";
 import type { Message } from "./types/msg";
+import ReactMarkDown from 'react-markdown'
 
 function App() {
   const [msgs, setMsgs] = useState<Message[]>([]);
@@ -11,6 +12,7 @@ function App() {
   const renderMsgs = () => {
     return msgs?.map((m) => (
       <div key={m.id} className={`${m.isMine ? "myMsg" : "botMsg"}`}>
+        <ReactMarkDown></ReactMarkDown>
         {m.message}
       </div>
     ));
