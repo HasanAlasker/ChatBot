@@ -1,25 +1,23 @@
-# 🤖 AI Chat Assistant
+# 🤖 PortfolioAI
 
-> My first step into building AI-powered applications.
+> An AI-powered portfolio assistant that transforms a traditional developer portfolio into an interactive conversational experience.
 
-An AI-powered chatbot built to explore how Large Language Models can be integrated into full-stack web applications.
+Instead of browsing multiple pages, visitors can simply ask questions about my projects, technical skills, experience, or software engineering approach and receive context-aware responses powered by a Large Language Model.
 
-Rather than focusing only on making a chatbot that "works", this project was built to understand the engineering decisions behind modern AI applications—how prompts are constructed, how models are selected, how token usage affects cost, and how conversations are managed efficiently.
-
-This project serves as the foundation of my AI integration journey and demonstrates practical LLM integration across both the frontend and backend.
+This project represents my first step into building AI-powered applications and understanding the engineering principles behind modern LLM integrations.
 
 ---
 
 ## ✨ Features
 
+* 🤖 AI-powered portfolio assistant
 * 💬 Natural language conversations
-* ⚡ Real-time AI responses
-* 🧠 Context-aware conversations
-* 🎯 Domain-specific assistant
+* 🧠 Context-aware responses
+* 📂 Portfolio knowledge base
 * 📱 Responsive interface
-* ⚙️ Full-stack architecture
-* 🎨 Modern UI built with shadcn/ui
-* 🚀 Fast runtime powered by Bun
+* ⚡ Fast Bun runtime
+* 🎨 Modern UI with shadcn/ui
+* 🔒 Backend proxy for secure AI requests
 
 ---
 
@@ -33,126 +31,91 @@ This project serves as the foundation of my AI integration journey and demonstra
 
 ### Backend
 
-* Express.js
 * Bun
+* Express.js
 
 ### AI
 
-* Large Language Model API
+* LLM API
 * Prompt Engineering
-* Context Management
-* Conversation History
+* Context Injection
+* Conversation Management
 
 ---
 
 ## 📚 What I Learned
 
-Building this project introduced me to many of the concepts required when integrating AI into production applications.
+This project was built to understand how AI is integrated into modern software products rather than simply consuming an AI API.
 
 ### Prompt Engineering
 
-Designing prompts that consistently guide the model toward accurate and relevant responses while minimizing unnecessary token usage.
+Learning how prompt structure directly influences response quality and consistency.
+
+### Context Injection
+
+Providing structured information that allows the model to answer questions accurately without additional training.
 
 ### Token Management
 
-Understanding how tokens affect:
-
-* Request cost
-* Response length
-* Conversation history
-* Context limits
+Understanding how prompts, responses, and conversation history impact token usage and operating costs.
 
 ### Model Selection
 
-Different models have different strengths.
-
-I learned how to choose an appropriate model depending on the balance between:
-
-* Cost
-* Speed
-* Response quality
-* Context window
-
-instead of always using the most capable model available.
-
-### Cost Optimization
-
-AI APIs can become expensive if used inefficiently.
-
-This project helped me explore techniques such as:
-
-* Reducing unnecessary context
-* Limiting response size
-* Sending only relevant conversation history
-* Choosing cheaper models when appropriate
-
-### Context Windows
-
-Managing conversation history while staying within the model's context limitations and preserving enough information for coherent responses.
+Exploring the trade-offs between response quality, latency, context size, and API pricing when choosing a model.
 
 ### Temperature
 
-Experimenting with temperature settings to understand the trade-off between deterministic and more creative responses depending on the use case.
+Experimenting with deterministic versus creative responses depending on the use case.
+
+### Context Windows
+
+Managing conversation history efficiently while staying within model limits.
 
 ### Full-Stack AI Integration
 
-Connecting an AI model to a web application required building both the backend API responsible for communicating with the model and a frontend capable of providing a smooth conversational experience.
+Building a React frontend and an Express backend that securely communicates with an LLM while keeping API credentials hidden from the client.
+
+### Bun Runtime
+
+Using Bun for the first time to simplify development and improve application performance.
 
 ---
 
-## 🚀 Getting Started
+## 🧠 How It Works
 
-### Clone the repository
+The application supplies the language model with structured information about my portfolio, projects, and technical background.
 
-```bash
-git clone https://github.com/yourusername/project-name.git
-```
+When users ask questions, the assistant answers only using that provided context, ensuring responses remain relevant and grounded rather than relying on assumptions.
 
-### Install dependencies
+---
 
-```bash
-bun install
-```
+## 🚀 Future Improvements
 
-### Start the backend
+This project is the starting point of a broader AI learning journey.
 
-```bash
-bun run dev
-```
+Planned improvements include:
 
-### Start the frontend
-
-```bash
-bun run dev
-```
+* Upload custom documentation
+* Multi-document support
+* Streaming responses
+* Conversation persistence
+* Retrieval-Augmented Generation (RAG)
+* Vector databases
+* Embeddings
+* Semantic search
+* Source citations
+* GitHub repository indexing
+* Tool calling
 
 ---
 
 ## 🎯 Why I Built This
 
-I've always focused on building strong software engineering fundamentals before relying heavily on AI.
+Throughout my software engineering journey, I've focused on building strong fundamentals by designing and implementing applications from the ground up.
 
-This project represents the next stage of that journey—learning how modern language models can be thoughtfully integrated into real applications while understanding the engineering trade-offs behind them.
+As AI becomes an increasingly important part of modern software development, I wanted to understand the engineering decisions behind it—not just how to call an API, but how to build applications that use language models effectively and responsibly.
 
-Instead of treating AI as a black box, I wanted to understand how factors like prompt design, token usage, model selection, context management, and cost optimization influence the quality and efficiency of an AI-powered product.
-
-This is the first project in what I hope will become a much broader exploration of AI engineering and intelligent software systems.
-
----
-
-## 🔮 Future Improvements
-
-* Retrieval-Augmented Generation (RAG)
-* Streaming responses
-* Conversation persistence
-* Multiple AI model support
-* Tool calling / function calling
-* File uploads
-* Source citations
-* Semantic search
-* Vector database integration
-* Authentication
-* Conversation analytics
+This project is my first step toward that goal and serves as the foundation for more advanced AI projects in the future.
 
 ---
 
@@ -160,4 +123,4 @@ This is the first project in what I hope will become a much broader exploration 
 
 **Hasan Alasker**
 
-Frontend-focused Software Engineer exploring AI-powered application development and modern LLM integration.
+Frontend & Full-Stack Software Engineer exploring AI-powered application development through practical, hands-on projects.
