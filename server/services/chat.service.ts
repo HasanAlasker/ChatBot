@@ -3,14 +3,13 @@ import { conversationRepo } from "../repositories/conversation.repo";
 import template from "../prompts/instructions.txt";
 import fs from "fs";
 import path from "path";
-import { isUtf8 } from "buffer";
 
-const parkInfo = fs.readFileSync(
-  path.join(__dirname, "..", "prompts", "WonderWorld.md"),
+const HasanInfo = fs.readFileSync(
+  path.join(__dirname, "..", "prompts", "Hasan.md"),
   "utf8",
 );
 
-const instructions = template.replace("{{parkInfo}}", parkInfo);
+const instructions = template.replace("{{HasanInfo}}", HasanInfo);
 
 const aiClient = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 

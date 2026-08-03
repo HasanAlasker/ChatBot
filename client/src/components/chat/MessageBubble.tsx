@@ -7,7 +7,7 @@ interface Props {
 
 export default function MessageBubble({ message }: Props) {
   return (
-    <div key={message.id} className={`${message.isMine ? "myMsg" : "botMsg"}`}>
+    <div className={`${message.isMine ? "myMsg" : "botMsg"}`}>
       <ReactMarkdown>{message.message}</ReactMarkdown>
     </div>
   );
