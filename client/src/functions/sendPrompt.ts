@@ -33,7 +33,7 @@ export const sendPrompt = async (
     ]);
     notificationSound.play();
   } catch (error) {
-    setLoading(false);
+    console.log(error);
   } finally {
     setLoading(false);
   }

@@ -14,13 +14,13 @@ export default function Welcome({
   conversationId,
 }: Props) {
   return (
-    <div className="m-auto flex max-w-lg flex-col items-center gap-6 px-6 text-center">
+    <div className="m-auto flex max-w-xl flex-col items-center gap-12 px-6 text-center">
       <div className="flex flex-col gap-2">
-        <h1 className="text-xl font-semibold text-zinc-900">
+        <h1 className="text-2xl font-semibold text-zinc-900">
           Hasan Alasker's Portfolio Assistant
         </h1>
-        <p className="text-sm leading-relaxed text-zinc-500">
-          Ask me about Hasan's projects, experience, or skills — I'll answer
+        <p className="text-md leading-relaxed text-zinc-500">
+          Ask me about Hasan's projects, experience, or skills - I'll answer
           based on his portfolio.
         </p>
       </div>
@@ -30,14 +30,14 @@ export default function Welcome({
           "What projects has Hasan built?",
           "What's his tech stack?",
           "How can I get in touch?",
-          "Where can I find Hasan's Projects?",
+          "Where can I find his projects?",
         ].map((prompt) => (
           <button
             key={prompt}
-            onClick={() =>
-              sendPrompt(prompt, setMsgs, setLoading, conversationId)
+            onClick={async () =>
+              await sendPrompt(prompt, setMsgs, setLoading, conversationId)
             }
-            className="rounded-full border border-zinc-200 px-3.5 py-1.5 text-sm text-zinc-600 transition-colors hover:border-gray-300 hover:bg-black hover:text-white"
+            className="rounded-full border border-zinc-200 px-3.5 py-1.5 text-sm md:text-md text-zinc-600 transition-colors hover:border-gray-300 hover:bg-black hover:text-white"
           >
             {prompt}
           </button>
